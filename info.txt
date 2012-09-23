@@ -1,0 +1,13 @@
+"Gamemode"
+{
+    "name"  "SmokesRP"
+    "version"   "1.0"
+
+    "author_name"   "Dylan \"Laredef\" Stokes, Tyler \"Olaf\" Stokes, Christopher \"mrchris75\"
+    "author_email"  "smokesrp@gmail.com"
+    "author_url"    ""
+
+    "icon"  ""
+    "info"  ""
+    "hide"  "0"
+}
