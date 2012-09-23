@@ -6,5 +6,5 @@ function Player:new(hp, xp)
 	return struct;
 end
 
-john = Player:new();
+john = Player.new();
 print (john.hp,john.xp);
