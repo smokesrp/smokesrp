@@ -1,4 +1,4 @@
-"terrortown"
+"smokesrp"
 {
 	"base"		"sandbox"
 	"title"		"SmokesRP"
