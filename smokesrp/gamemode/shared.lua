@@ -3,11 +3,8 @@ GM.Author		= "Dylan \"Laredef\" Stokes, Tyler \"Olaf\" Stokes, Christopher \"mrc
 GM.Email		= "smokesrp@gmail.com"
 GM.Website		= ""
 
-DeriveGamemode( "sandbox" )
-include("jobs.lua")
 
-Job.new();												--creates the citizen job stored in jobs[1]
-Job.new("Police Officer", Color( 125, 125, 125, 255 ), {"gmod_tool"},"srp_police");	--creates an example police job stored in jobs[2]
+DeriveGamemode( "sandbox" )
 
 for index = 1, #jobs do
 	concommand.Add( jobs[index].cmd, function()

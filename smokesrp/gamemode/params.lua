@@ -1,4 +1,3 @@
-include( "jobs.lua" )
 params = {}
 
 params.walkspeed = 325

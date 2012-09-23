@@ -13,3 +13,6 @@ function Job:new(name, color, loadout, cmd)
 	team.SetUp(#jobs, name, color) --creates the team
 	return struct;
 end
+
+Job.new();--creates the citizen job stored in jobs[1]
+Job.new("Police Officer", Color( 125, 125, 125, 255 ), {"gmod_tool"},"srp_police");	--creates an example police job stored in jobs[2]
