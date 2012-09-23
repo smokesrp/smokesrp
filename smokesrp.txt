@@ -1,0 +1,11 @@
+"terrortown"
+{
+	"base"		"sandbox"
+	"title"		"SmokesRP"
+	"menusystem"	"1"
+
+	"settings"
+	{
+
+	}
+}
