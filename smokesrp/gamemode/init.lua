@@ -1,9 +1,10 @@
+include( "jobs.lua" )
+
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "cl_init.lua" )
 
 include( "shared.lua" )
 include( "params.lua" )
-include( "jobs.lua" )
 
 function GM:PlayerSpawn( ply )
 	self.BaseClass:PlayerSpawn( ply )
