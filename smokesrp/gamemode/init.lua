@@ -8,7 +8,7 @@ include( "params.lua" )
 
 function GM:PlayerSpawn( ply )
 	self.BaseClass:PlayerSpawn( ply )
-	
+	ply:setTeam(1);
 	ply:SetGravity( 1 )
 	ply:SetHealth( 100, true )
 	
