@@ -8,12 +8,10 @@ include( "params.lua" )
 
 function GM:PlayerSpawn( ply )
 	self.BaseClass:PlayerSpawn( ply )
-	ply:setTeam(1);
 	ply:SetGravity( 1 )
 	ply:SetHealth( 100, true )
 	ply:SetWalkSpeed( params.walkspeed )
 	ply:SetRunSpeed( params.runspeed )
-	ply:Spawn()
 end
 
 function GM:PlayerInitialSpawn( ply )
