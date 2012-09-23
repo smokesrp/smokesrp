@@ -4,10 +4,15 @@ GM.Email		= "smokesrp@gmail.com"
 GM.Website		= ""
 
 DeriveGamemode( "sandbox" )
+include("jobs.lua")
 
-team.SetUp( 1, "Citizen", Color( 125, 125, 125, 255 ) ) //Team guest
-concommand.Add( "srp_citizen", function()
-	ply:SetTeam( 1 )
-	ply:Spawn()
-	ply:PrintMessage( HUD_PRINTTALK, "You have become a "..team.GetName( ply:Team() ).."." )
-end )
+Job.new();												--creates the citizen job stored in jobs[1]
+Job.new("Police Officer", Color( 125, 125, 125, 255 ), {"gmod_tool"},"srp_police");	--creates an example police job stored in jobs[2]
+
+for index = 1, #jobs do
+	concommand.Add( jobs[index].cmd, function()
+		ply:SetTeam(index)
+		ply:Spawn()
+		ply:PrintMessage( HUD_PRINTTALK, "You have become a "..team.GetName( ply:Team() ).."." )
+	end )
+end

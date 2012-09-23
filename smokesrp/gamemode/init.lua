@@ -22,9 +22,8 @@ function GM:PlayerInitialSpawn( ply )
 end
 
 function GM:PlayerLoadout( ply )
-	if( ply:Team() == 1 ) then //Citizen
-		ply:Give( "weapon_phygun" )
-		ply:Give( "weapon_physcannon" )
-		ply:Give( "gmod_tool" )
+	local lo = jobs[ply:Team()].loadout
+	for index = 1, #lo do
+		ply:Give(lo[index]);
 	end
 end
