@@ -1,4 +1,4 @@
-include("hud.lua")
+AddCSLuaFile( "hud.lua" )
 
 function GM:HUDShouldDraw(hud) -- What should be draw
 	if(hud == "CHudHealth" || hud == "CHudBattery" || hud == "CHudSuitPower") then
