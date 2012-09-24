@@ -19,4 +19,4 @@ function Job:new(name, color, loadout, cmd)
 end
 
 Job.new();--creates the citizen job stored in jobs[1]
---Job.new("Police Officer", Color( 125, 125, 125, 255 ), {"gmod_tool"},"srp_police");	--creates an example police job stored in jobs[2]
+Job.new("Police Officer", Color( 125, 125, 125, 255 ), {"gmod_tool"},"srp_police");	--creates an example police job stored in jobs[2]
