@@ -11,7 +11,7 @@ function Job:new(name, color, loadout, cmd)
 	setmetatable(struct, {__index = Job});
 	table.insert(jobs, struct);
 	team.SetUp(#jobs, name, color) --creates the team
-	concommand.Add( cmd, function( ply )//creates console command for switching
+	concommand.Add( struct.cmd, function( ply )//creates console command for switching
 		ply:SetTeam( id )
 		ply:Spawn()
 	end )
