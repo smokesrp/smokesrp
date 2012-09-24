@@ -2,9 +2,24 @@ admin.cmds = {}
 admin.cmds.cmd = {}
 admin.cmds.func = {}
 
+function admin.cmds.gettarget( sender, targetname )
+	local target = nil
+	for k,v in pairs( player.GetAll() ) do
+		if( string.find( v:GetName(), targetname ) ) then
+			target = v
+		end
+	end
+	if( target == nil ) then
+		admin.message( sender, false, "Player not found." )
+	else
+		return target
+	end
+end
+
 //kick
 table.insert( admin.cmds.cmd, "srpa_kick" )
-table.insert( admin.cmds.func, function( sender, target, params )
+table.insert( admin.cmds.func, function( sender, targetname, params )
+	local target = admin.cmds.gettarget( sender, targetname )
 	admin.announce( false, "Admin \""..sender:GetName().."\" has kicked \""..target:GetName().."\"." )
 	target:Kick( tostring( params ) )
 end )
