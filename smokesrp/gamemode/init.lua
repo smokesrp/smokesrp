@@ -22,19 +22,13 @@ function GM:PlayerInitialSpawn( ply )
 			umsg.Short( index )
 		umsg.End()
 	end
-	timer.Create( ply:UniqueID(), 10, 1, function()
-		for k,v in pairs( params.startcmds ) do //Run every command in the params.startcmds array
-			ply:ConCommand( v )
-		end
-	end )
+	for k,v in pairs( params.startcmds ) do //Run every command in the params.startcmds array
+		ply:ConCommand( v )
+	end
 end
 
 function GM:PlayerLoadout( ply )
-	if( ply:Team() != nil ) then
-		local lo = jobs[ply:Team()].loadout
-	else
-		local lo = jobs[1].loadout
-	end
+	local lo = jobs[ply:Team()].loadout
 	for index = 1, #lo do
 		ply:Give(lo[index]);
 	end
