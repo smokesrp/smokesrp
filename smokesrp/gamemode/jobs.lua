@@ -6,8 +6,7 @@ jobs = {};			--an array that holds all of the jobs
 					--at the index corresponding to their ID number
 
 --defaults this makes a citizen class if you dont pass arguments to the constructor.
-//Job = {name = "Citizen", color = Color( 125, 125, 125, 255 ), loadout = {"weapon_physcannon", "weapon_physgun","gmod_tool"}, cmd = "srp_citizen"};
-Job = {"Citizen", Color( 125, 125, 125, 255 ), {"weapon_physcannon", "weapon_physgun","gmod_tool"}, "srp_citizen"};
+Job = {name = "Citizen", color = Color( 125, 125, 125, 255 ), loadout = {"weapon_physcannon", "weapon_physgun","gmod_tool"}, cmd = "srp_citizen"};
 function Job:new(name, color, loadout, cmd)
 	local struct = {name = name, color = color, loadout = loadout, cmd = cmd, id = (#jobs + 1)};
 	setmetatable(struct, {__index = Job});
