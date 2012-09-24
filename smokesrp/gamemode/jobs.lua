@@ -13,8 +13,8 @@ function Job:new(name, color, loadout, cmd)
 	table.insert(jobs, struct);
 	table.insert(idlist, struct.cmd = struct.id);
 	team.SetUp(#jobs, name, color) --creates the team
-	concommand.Add( struct.cmd, function(ply, command)//creates console command for switching
-		ply:SetTeam( idlist[command])
+	concommand.Add( struct.cmd, function(ply)//creates console command for switching
+		ply:SetTeam( id)
 		ply:Spawn()
 	end )
 	return struct;
