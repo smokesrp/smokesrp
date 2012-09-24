@@ -1,4 +1,5 @@
 include( "jobs.lua" )
+include( "admin/cl_admin.lua" )
 
 function GM:HUDShouldDraw(hud) -- What should be draw
 	if(hud == "CHudHealth" || hud == "CHudBattery" || hud == "CHudSuitPower") then
