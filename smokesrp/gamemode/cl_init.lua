@@ -8,7 +8,7 @@ end
 
 function DrawHud()
 	-- Main Box --
-	draw.RoundedBox(12, 10, ScrH()-90, 175, 65, Color(25,  25, 25, 150))
+	draw.RoundedBox(12, 10, ScrH()-90, 250, 65, Color(25,  25, 25, 150))
 	-- Clients Name --
 	draw.SimpleText( LocalPlayer():Nick(), "BudgetLabel", 55, ScrH() - 80, Color( 255, 255, 255, 255 ) )
 	-- Clients Health --
