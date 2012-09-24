@@ -16,7 +16,7 @@ function DrawHud()
 	-- Clients Health --
 	draw.SimpleText( "Health: "..LocalPlayer():Health(), "BudgetLabel", 55, ScrH() - 65, Color( 255, 255, 255, 255 ) )
 	-- Clients Job --
-	--draw.SimpleText( "Job: "..team.GetName( LocalPlayer():Team() ), "BudgetLabel", 55, ScrH() - 50, Color( 255, 255, 255, 255 ) )
+	draw.SimpleText( "Job: "..jobs[LocalPlayer():Team()].name, "BudgetLabel", 55, ScrH() - 50, Color( 255, 255, 255, 255 ) )
 end
 
 function GM:HUDPaint()
