@@ -19,3 +19,14 @@ function GM:HUDPaint()
 	DrawHud() -- Paints the DrawHud function
 	self.BaseClass:HUDPaint()
 end
+
+usermessage.Hook( "sendjobs", function( um ) //get jobs and create cmds
+	local cmd = um:ReadString()
+	local id = um:ReadShort()
+	concommand.Add( cmd, function( id )
+		net.Start( "changejob" )
+		net.WriteEntity( LocalPlayer() )
+		net.WriteInt( id, 8 )
+		net.SendToServer()
+	end )
+end )

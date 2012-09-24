@@ -16,9 +16,17 @@ end
 
 function GM:PlayerInitialSpawn( ply )
 	self.BaseClass:PlayerSpawn( ply )
-	for k,v in pairs( params.startcmds ) do //Run every command in the params.startcmds array
-		ply:ConCommand( v )
+	for index = 1, #jobs do
+		umsg.Start( "sendjobs", ply )
+			umsg.String( jobs[index].cmd )
+			umsg.Short( index )
+		umsg.End()
 	end
+	timer.Create( ply:UniqueID(), 10, 1, function()
+		for k,v in pairs( params.startcmds ) do //Run every command in the params.startcmds array
+			ply:ConCommand( v )
+		end
+	end )
 end
 
 function GM:PlayerLoadout( ply )
