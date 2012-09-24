@@ -1,18 +1,19 @@
 local admin = {} //start main array
 
 function admin.main() //main function only run if the server knows your an admin
-	net.Receive( "send_cmds", function() //create net message hook for creating admin console commands client side
+	net.Receive( "admin_send_cmds", function() //create net message hook for creating admin console commands client side
 		local cmd = net.ReadString()
 		local id = net.ReadInt( 8 )
-		concommand.Add( cmd, function( ply, cmd, args, id )
+		concommand.Add( cmd, function( ply, cmd, args )
 			net.Start( "admin_exec" )
 				net.WriteInt( id, 8 )
-				net.WriteEntity( ply )
-				net.WriteString( args[1] )
-				net.WriteString( args[2] )
-			net.SentToServer()
+				net.WriteString( tostring( args[1] ) )
+				net.WriteString( tostring( args[2] ) )
+			net.SendToServer()
 		end )
 	end )
+	net.Start( "admin_req_cmds" )
+	net.SendToServer()
 end
 
 net.Receive( "admin_init", function() //if is an admin run main

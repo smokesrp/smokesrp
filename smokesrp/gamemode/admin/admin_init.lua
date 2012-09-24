@@ -51,10 +51,9 @@ hook.Add( "PlayerDisconnected", "admin_leave_check", function( ply ) //if a play
 	end
 end )
 
-net.Receive( "admin_req_cmds", function() //send the admin commands to clients which request them
-	local ply = net.ReadEntity()
+net.Receive( "admin_req_cmds", function( length, ply) //send the admin commands to clients that request them
 	for i = 1, #admin.cmds.cmd do
-		net.Start( "send_cmds" )
+		net.Start( "admin_send_cmds" )
 			net.WriteString( admin.cmds.cmd[i] )
 			net.WriteInt( i, 8 )
 		net.Send( ply )
