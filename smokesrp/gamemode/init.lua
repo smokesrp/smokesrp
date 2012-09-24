@@ -16,9 +16,6 @@ end
 function GM:PlayerInitialSpawn( ply )
 	ply:SetTeam( 1 )
 	self.BaseClass:PlayerSpawn( ply )
-	for k,v in pairs( params.startcmds ) do //Run every command in the params.startcmds array
-		ply:ConCommand( v )
-	end
 end
 
 function GM:PlayerLoadout( ply )
