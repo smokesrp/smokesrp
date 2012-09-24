@@ -1,6 +1,5 @@
 --Common ground for adding jobs
 --team, cmd, loadout
-util.AddNetworkString( "changejob" )
 
 jobs = {};			--an array that holds all of the jobs
 					--at the index corresponding to their ID number

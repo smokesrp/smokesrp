@@ -14,14 +14,15 @@ function GM:PlayerSpawn( ply )
 end
 
 function GM:PlayerInitialSpawn( ply )
+	ply:SetTeam( 1 )
 	self.BaseClass:PlayerSpawn( ply )
 	for k,v in pairs( params.startcmds ) do //Run every command in the params.startcmds array
 		ply:ConCommand( v )
 	end
-	ply:SetTeam( 1 )
 end
 
 function GM:PlayerLoadout( ply )
+	if( SERVER ) then RunConsoleCommand( "say", ply:Team() ) end
 	local lo = jobs[ply:Team()].loadout
 	for index = 1, #lo do
 		ply:Give(lo[index]);
