@@ -8,11 +8,13 @@ end
 
 function DrawHud()
 	-- Main Box --
-	draw.RoundedBox(12, 10, ScrH()-75, 175, 50, Color(25,  25, 25, 150))
+	draw.RoundedBox(12, 10, ScrH()-90, 175, 65, Color(25,  25, 25, 150))
 	-- Clients Name --
-	draw.SimpleText( LocalPlayer():Nick(), "BudgetLabel", 55, ScrH() - 65, Color( 255, 255, 255, 255 ) )
+	draw.SimpleText( LocalPlayer():Nick(), "BudgetLabel", 55, ScrH() - 80, Color( 255, 255, 255, 255 ) )
 	-- Clients Health --
-	draw.SimpleText( "Health: "..LocalPlayer():Health(), "BudgetLabel", 55, ScrH() - 50, Color( 255, 255, 255, 255 ) )
+	draw.SimpleText( "Health: "..LocalPlayer():Health(), "BudgetLabel", 55, ScrH() - 65, Color( 255, 255, 255, 255 ) )
+	-- Clients Job --
+	draw.SimpleText( "Job: "..LocalPlayer():Team(), "BudgetLabel", 55, ScrH() - 50, Color( 255, 255, 255, 255 ) )
 end
 
 function GM:HUDPaint()
