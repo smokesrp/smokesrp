@@ -12,14 +12,12 @@ function Job:new(name, color, loadout, cmd)
 	setmetatable(struct, {__index = Job});
 	table.insert(jobs, struct);
 	team.SetUp(#jobs, name, color) --creates the team
+	concommand.Add( cmd, function( ply )//creates console command for switching
+		ply:SetTeam( id )
+		ply:Spawn()
+	end )
 	return struct;
 end
 
 Job.new();--creates the citizen job stored in jobs[1]
 --Job.new("Police Officer", Color( 125, 125, 125, 255 ), {"gmod_tool"},"srp_police");	--creates an example police job stored in jobs[2]
-
-net.Receive( "changejob", function() //handles changing jobs
-	local ply = net.ReadEntity()
-	local id = net.ReadInt( 8 )
-	ply:SetTeam( id )
-end )

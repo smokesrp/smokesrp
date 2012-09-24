@@ -1,8 +1,7 @@
 include( "jobs.lua" )
-
+AddCSLuaFile( "jobs.lua" )
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "cl_init.lua" )
-
 include( "shared.lua" )
 include( "params.lua" )
 
@@ -16,12 +15,6 @@ end
 
 function GM:PlayerInitialSpawn( ply )
 	self.BaseClass:PlayerSpawn( ply )
-	for index = 1, #jobs do
-		umsg.Start( "sendjobs", ply )
-			umsg.String( jobs[index].cmd )
-			umsg.Short( index )
-		umsg.End()
-	end
 	for k,v in pairs( params.startcmds ) do //Run every command in the params.startcmds array
 		ply:ConCommand( v )
 	end
