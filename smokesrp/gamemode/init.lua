@@ -20,9 +20,6 @@ function GM:PlayerInitialSpawn( ply )
 end
 
 function GM:PlayerLoadout( ply )
-	for k,v in pairs( player.GetAll() ) do
-		v:PrintMessage( HUD_PRINTTALK, ply:Team() )
-	end
 	local lo = jobs[ply:Team()].loadout
 	for index = 1, #lo do
 		ply:Give(lo[index]);

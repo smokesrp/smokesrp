@@ -1,4 +1,5 @@
 include( "jobs.lua" )
+include( "shared.lua" )
 include( "admin/cl_admin.lua" )
 
 function GM:HUDShouldDraw(hud) -- What should be draw
@@ -23,4 +24,8 @@ end
 function GM:HUDPaint()
 	DrawHud() -- Paints the DrawHud function
 	self.BaseClass:HUDPaint()
+end
+
+function GM:DrawDeathNotice(x, y)
+    return
 end
