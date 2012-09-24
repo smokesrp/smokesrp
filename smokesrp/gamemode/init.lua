@@ -30,7 +30,11 @@ function GM:PlayerInitialSpawn( ply )
 end
 
 function GM:PlayerLoadout( ply )
-	local lo = jobs[ply:Team()].loadout
+	if( ply:Team() != nil ) then
+		local lo = jobs[ply:Team()].loadout
+	else
+		local lo = jobs[1].loadout
+	end
 	for index = 1, #lo do
 		ply:Give(lo[index]);
 	end
