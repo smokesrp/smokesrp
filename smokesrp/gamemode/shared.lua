@@ -3,5 +3,4 @@ GM.Author		= "Dylan \"Laredef\" Stokes, Tyler \"Olaf\" Stokes, Christopher \"mrc
 GM.Email		= "smokesrp@gmail.com"
 GM.Website		= ""
 
-
 DeriveGamemode( "sandbox" )
