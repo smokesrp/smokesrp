@@ -18,7 +18,7 @@ function DrawHud()
 	-- Clients Health --
 	draw.SimpleText( "Health: "..LocalPlayer():Health(), "BudgetLabel", 55, ScrH() - 80, Color( 255, 255, 255, 255 ) )
 	-- Clients Money --
-	draw.SimpleText( "Money: "..LocalPlayer():GetNWInt("money"), "BudgetLabel", 55, ScrH() - 65, Color( 255, 255, 255, 255 ) )
+	draw.SimpleText( "Money: $"..LocalPlayer():GetNWInt("money"), "BudgetLabel", 55, ScrH() - 65, Color( 255, 255, 255, 255 ) )
 	-- Clients Job --
 	draw.SimpleText( "Job: "..jobs[LocalPlayer():Team()].name, "BudgetLabel", 55, ScrH() - 50, Color( 255, 255, 255, 255 ) )
 	
