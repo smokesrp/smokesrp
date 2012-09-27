@@ -16,7 +16,7 @@ end
 
 concommand.Add("srp_job", function(ply, command, args)
 	id = toNumber(args[1]);
-	if(id == nil || id < 1 || id > #job) then return;	--if the argument is nil or less than 1 
+	if(id == nil or id < 1 or id > #job) then return;	--if the argument is nil or less than 1 
 	ply::SetTeam(id);					--or greater than the amount of jobs
 	ply::Spawn();
 end )
