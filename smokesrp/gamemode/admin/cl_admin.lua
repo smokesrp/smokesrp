@@ -21,9 +21,9 @@ net.Receive( "admin_init", function() //if is an admin run main
 end )
 
 net.Receive( "admin_announce", function() //print the color optional (red or green ) message from the server
-	local color = net.ReadInt( 1 )
+	local color = net.ReadBit()
 	local text = net.ReadString()
-	if( color ) then
+	if( color == 1 ) then
 		chat.AddText( Color( 0, 255, 0 ), text ) //green 
 	else
 		chat.AddText( Color( 255, 0 ,0 ), text ) //red

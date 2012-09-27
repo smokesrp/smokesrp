@@ -20,14 +20,14 @@ end
 
 function admin.announce( color, text ) //send a color optional (red or green) message to all clients
 	net.Start( "admin_announce" )
-		net.WriteInt( color, 1 )
+		net.WriteBit( color )
 		net.WriteString( text )
 	net.Broadcast()
 end
 
 function admin.message( target, color, text ) //send a color optional (red or green) message to ONE client
 	net.Start( "admin_announce" )
-		net.WriteInt( color, 1 )
+		net.WriteBit( color )
 		net.WriteString( text )
 	net.Send( target )
 end

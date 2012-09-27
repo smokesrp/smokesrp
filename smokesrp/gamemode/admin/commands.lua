@@ -5,7 +5,7 @@ admin.cmds.func = {}
 function admin.cmds.gettarget( sender, targetname ) //get target entity from string argument
 	local target = nil
 	for k,v in pairs( player.GetAll() ) do
-		if( string.find( string.lower( v:GetName() ), string.lower( targetname ) ) ) then
+		if( string.find( string.lower( v:Nick() ), string.lower( targetname ) ) ) then
 			if( target != nil ) then
 				admin.message( sender, false, "Multiple players found." )
 				return false
@@ -32,7 +32,7 @@ table.insert( admin.cmds.cmd, "srpa_kick" )
 table.insert( admin.cmds.func, function( sender, targetname, reason )
 	local target = admin.cmds.gettarget( sender, targetname )
 	if( target ) then
-		admin.announce( false, "Admin \""..sender:GetName().."\" has kicked \""..target:GetName().."\" for: \""..tostring( reason ).."\"." )
+		admin.announce( false, "Admin \""..sender:Nick().."\" has kicked \""..target:Nick().."\" for: \""..tostring( reason ).."\"." )
 		target:Kick( tostring( reason ) )
 	end
 end )
@@ -43,21 +43,31 @@ table.insert( admin.cmds.func, function( sender, targetname, jobname )
 	if( target ) then
 		local tojob = nil
 		for i = 1, #jobs do
-			if( jobs[i].name == jobname ) then
+			if( string.lower( jobs[i].name ) == string.lower( jobname ) ) then
 				tojob = i
 			end
 		end
 		if( tojob == nil ) then
 			admin.message( sender, false, "Invalid job." )
 		else
-			v:SetTeam( tojob )
-			v:Spawn()
-			admin.announce( true, "Admin \""..sender:GetName().."\" has changed \""..target:GetName().."\"'s job to: \""..team.GetName( target:Team() ).."\"." )
+			target:SetTeam( tojob )
+			target:Spawn()
+			admin.announce( true, "Admin \""..sender:Nick().."\" has changed \""..target:Nick().."\"'s job to: \""..team.GetName( jobs[ tojob ].name ).."\"." )
 		end
 	end
 end )
 	
 net.Receive( "admin_exec", function( length, sender ) //handle commands executed by admins
+	local isadmin = false
+	for k,v in pairs( admin.admins ) do
+		if( v == sender ) then
+			isadmin = true
+		end
+	end
+	if( isadmin == false ) then
+		admin.announce( false, "WARNING: Player \""..sender:Nick().."\" | \""..sender:SteamID().."\" attempted to spoof an admin command!" )
+		sender:Kick( "Admin command spoof detected." )
+	end
 	arg1 = ""
 	arg2 = ""
 	local id = net.ReadInt( 8 )
