@@ -39,7 +39,7 @@ end
  
 function new_player( SteamID, ply )
 	steamID = SteamID
-	sql.Query( "INSERT INTO smokesrp_money (`unique_id`, `money`)VALUES ('"..steamID.."', '100')" )
+	sql.Query( "INSERT INTO smokesrp_money (`unique_id`, `money`)VALUES ('"..steamID.."', '"..params.startingmoney.."')" )
 	result = sql.Query( "SELECT unique_id, money FROM smokesrp_money WHERE unique_id = '"..steamID.."'" )
 	if (result) then
 		sql_value_money( ply )
