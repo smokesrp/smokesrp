@@ -1,7 +1,7 @@
 --Common ground for adding jobs
 --team, cmd, loadout
 
-jobs = {};			--an array that holds all of the jobs
+jobs = {};				--an array that holds all of the jobs
 					--at the index corresponding to their ID number
 
 --defaults this makes a citizen class if you dont pass arguments to the constructor.
@@ -16,7 +16,9 @@ end
 
 concommand.Add("srp_job", function(ply, command, args)
 	id = toNumber(args[1]);
-	if(id == nil or id < 1 or id > #job) then return;	--if the argument is nil or less than 1 
+	if(id == nil or id < 1 or id > #job) then
+		return;						--if the argument is nil or less than 1 
+	end
 	ply::SetTeam(id);					--or greater than the amount of jobs
 	ply::Spawn();
 end )
