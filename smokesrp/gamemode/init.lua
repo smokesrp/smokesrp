@@ -19,6 +19,7 @@ function GM:PlayerInitialSpawn( ply )
 	ply:SetTeam( 1 )
 	self.BaseClass:PlayerSpawn( ply )
 	timer.Create("Salary", 15,0, function() Salary( ply ) end) -- Calls the Salary function every 15 seconds
+	timer.Create("Save", 60,0, function() save( ply ) end) -- Calls the save function every 60 seconds
 end
 
 function GM:PlayerLoadout( ply )

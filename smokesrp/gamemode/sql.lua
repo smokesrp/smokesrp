@@ -1,8 +1,8 @@
 function tables_exist()
-	if (!sql.TableExists("smokesrp_money")) then
-		query = "CREATE TABLE smokesrp_money ( unique_id varchar(255), money int )"
+	if (!sql.TableExists("smokesrp_data")) then
+		query = "CREATE TABLE smokesrp_data ( unique_id varchar(255), money int )"
 		result = sql.Query(query)
-		if (sql.TableExists("smokesrp_money")) then
+		if (sql.TableExists("smokesrp_data")) then
 			Msg("Table was created!\n")
 		else
 			Msg("Error 1: Table was not created\n")
@@ -29,7 +29,7 @@ hook.Add( "Initialize", "Initialize", Initialize )
  
 function player_exists( ply )
 	steamID = ply:GetNWString("SteamID")
-	result = sql.Query("SELECT unique_id, money FROM smokesrp_money WHERE unique_id = '"..steamID.."'")
+	result = sql.Query("SELECT unique_id, money FROM smokesrp_data WHERE unique_id = '"..steamID.."'")
 	if (result) then
 		sql_value_money( ply )
 	else
@@ -39,8 +39,8 @@ end
  
 function new_player( SteamID, ply )
 	steamID = SteamID
-	sql.Query( "INSERT INTO smokesrp_money (`unique_id`, `money`)VALUES ('"..steamID.."', '"..params.startingmoney.."')" )
-	result = sql.Query( "SELECT unique_id, money FROM smokesrp_money WHERE unique_id = '"..steamID.."'" )
+	sql.Query( "INSERT INTO smokesrp_data (`unique_id`, `money`)VALUES ('"..steamID.."', '"..params.startingmoney.."')" )
+	result = sql.Query( "SELECT unique_id, money FROM smokesrp_data WHERE unique_id = '"..steamID.."'" )
 	if (result) then
 		sql_value_money( ply )
 	else
@@ -49,8 +49,8 @@ function new_player( SteamID, ply )
 end
 
 function sql_value_money ( ply )
-	unique_id = sql.QueryValue("SELECT unique_id FROM smokesrp_money WHERE unique_id = '"..steamID.."'")
-	money = sql.QueryValue("SELECT money FROM smokesrp_money WHERE unique_id = '"..steamID.."'")
+	unique_id = sql.QueryValue("SELECT unique_id FROM smokesrp_data WHERE unique_id = '"..steamID.."'")
+	money = sql.QueryValue("SELECT money FROM smokesrp_data WHERE unique_id = '"..steamID.."'")
 	ply:SetNWString("unique_id", unique_id)
 	ply:SetNWInt("money", money)
 end
@@ -58,5 +58,5 @@ end
 function save ( ply )
 	money = ply:GetNWInt("money")
 	unique_id = ply:GetNWString ("SteamID")
-	sql.Query("UPDATE smokesrp_money SET money = "..money.." WHERE unique_id = '"..unique_id.."'")
+	sql.Query("UPDATE smokesrp_data SET money = "..money.." WHERE unique_id = '"..unique_id.."'")
 end
