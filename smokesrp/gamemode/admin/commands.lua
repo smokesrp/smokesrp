@@ -44,7 +44,7 @@ table.insert( admin.cmds.func, function( sender, targetname, jobname )
 		local tojob = nil
 		for i = 1, #jobs do
 			if( jobs[i].name == jobname ) then
-				tojob = jobs[i].id
+				tojob = i
 			end
 		end
 		if( tojob == nil ) then
