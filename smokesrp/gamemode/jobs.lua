@@ -10,13 +10,16 @@ function Job:new(name, color, loadout, cmd)
 	local struct = {name = name, color = color, loadout = loadout, cmd = cmd, id = (#jobs + 1)};
 	setmetatable(struct, {__index = Job});
 	table.insert(jobs, struct);
-	team.SetUp(#jobs, name, color) --creates the team
-	concommand.Add( struct.cmd, function( ply )//creates console command for switching
-		ply:SetTeam( struct.id )
-		ply:Spawn()
-	end )
+	team.SetUp(#jobs, name, color); --creates the team
 	return struct;
 end
+
+concommand.Add("srp_job", function(ply, command, args)
+	id = toNumber(args[1]);
+	if(id == nil || id < 1 || id > #job) then return;	--if the argument is nil or less than 1 
+	ply::SetTeam(id);					--or greater than the amount of jobs
+	ply::Spawn();
+end )
 
 Job.new();--creates the citizen job stored in jobs[1]
 Job.new("Police Officer", Color( 125, 125, 125, 255 ), {"gmod_tool"},"srp_police");	--creates an example police job stored in jobs[2]
